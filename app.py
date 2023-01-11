@@ -7,7 +7,7 @@ from openpyxl import load_workbook
 
 def carregar_planilha():
     pasta_banco = load_workbook('R:\Compartilhado\DP\cadastro bancos\cadastro_bancos.xlsx')
-    planilha_banco = pasta_banco['BANCOS']
+    planilha_banco = pasta_banco['Planilha1']
     cabecalho = True
     lista_contas = []
     for linha in planilha_banco.values:
@@ -33,12 +33,12 @@ def fazer_lctos_unico_fap(lista_contas):
     lista_empresas_cadastradas = []
     primeiro_acesso = True
     sleep(5)
-    pyautogui.click(227,33, duration=2)
+    pyautogui.click(227,33, duration=1)
     # COLABORADORES
-    pyautogui.move(0, 90, duration=2)
+    pyautogui.move(0, 90, duration=1)
     sleep(2)
     pyautogui.click()
-    sleep(10)
+    sleep(5)
     for dic in lista_contas:
     #     CÓDIGO EMPRESA
 
@@ -46,30 +46,30 @@ def fazer_lctos_unico_fap(lista_contas):
 
         if dic['empresa'] not in lista_empresas_cadastradas:
             pyautogui.doubleClick(255,161, duration=2)
-            sleep(2)
+            sleep(1)
             pyautogui.typewrite(dic['empresa'])
-            sleep(2)
+            sleep(1)
             pyautogui.press('enter')
-            sleep(10)
+            sleep(5)
 
     
         # colaborador
         pyautogui.typewrite(dic['colaborador'])
-        sleep(3)
+        sleep(1)
         pyautogui.press('enter')
         sleep(4)
     
 
         # Aba folha
-        pyautogui.click(641,678, duration=2)
-        sleep(2)
+        pyautogui.click(641,678, duration=1)
+        sleep(1)
 
         # Aba Banco
-        pyautogui.click(515,653, duration=2)
-        sleep(2)
+        pyautogui.click(515,653, duration=1)
+        sleep(1)
 
         # clicar campo banco
-        pyautogui.click(230,294, duration=2)
+        pyautogui.click(230,294, duration=1)
         sleep(1)
 
         pyautogui.typewrite(dic['banco'])
@@ -90,21 +90,21 @@ def fazer_lctos_unico_fap(lista_contas):
         pyautogui.typewrite(dic['digito'])
         sleep(1)
         pyautogui.press('enter')
-        sleep(2)
+        sleep(1)
 
         # conta salario
         pyautogui.click(273,380, duration=2)
-        sleep(2)
+        sleep(1)
         pyautogui.press('pagedown')
         sleep(1)
         pyautogui.press('enter')
-        sleep(2)
+        sleep(1)
 
         # salvar
         pyautogui.click(302,205, duration=2)
-        sleep(20)
+        sleep(10)
         pyautogui.click(982,585, duration=2)
-        sleep(2)
+        sleep(1)
         
         lista_empresas_cadastradas.append(dic['empresa'])
 
